@@ -18,7 +18,7 @@ ipaddress=$(ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2
 filename=config.json
 rndmethod=chacha20-ietf
 basedir=`cd \`dirname $0\`; pwd`
-configdir=`cd \`dirname $basedir\`; pwd`
+configdir=$basedir
 echo "{" > $filename
 echo -e "\t"\"server\":\"::\""," >> $filename
 echo -e "\t"\"server_port\":"$rndport""," >> $filename
