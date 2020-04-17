@@ -5,6 +5,7 @@ function mimvp_app_rand(){
     num=$(($RANDOM+1000000000))
     echo $(($num%$max+$min))
 }
+echo "Start Install Shadowsocks"
 sudo apt update 
 sudo apt-get install -y python-pip net-tools libsodium-dev
 sudo pip install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
