@@ -7,6 +7,7 @@ function mimvp_app_rand(){
 }
 sudo apt update
 sudo apt-get install -y python-pip net-tools libsodium-dev
+clear
 echo "Start Install Shadowsocks"
 sudo pip install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
