@@ -15,7 +15,7 @@ rndport=$(mimvp_app_rand 1024 65535)
 rndpassword=$(date +%s%N | md5sum | head -c 30)
 ipaddress=$(ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
 filename=config.json
-rndmethod=chacha20-ietf-poly1305
+rndmethod=chacha20-ietf
 basedir=`cd \`dirname $0\`; pwd`
 configdir=`cd \`dirname $basedir\`; pwd`
 echo "{" > $filename
