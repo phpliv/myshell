@@ -5,11 +5,19 @@ function mimvp_app_rand(){
     num=$(($RANDOM+1000000000))
     echo $(($num%$max+$min))
 }
-sudo apt update
-sudo apt-get install -y python-pip net-tools libsodium-dev
+cmd="apt-get"
+if [[ $(command -v apt-get) || $(command -v yum) ]] && [[ $(command -v systemctl) ]]; then
+	if [[ $(command -v yum) ]]; then
+		cmd="yum"
+	fi
+else
+	echo -e "仅支持 Ubuntu / Debian / Centos" && exit 1
+fi
+$cmd update -y
+$cmd install -y python-pip net-tools libsodium-dev
 clear
 echo "Start Install Shadowsocks"
-sudo pip install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
+pip install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf && sysctl -p
 
