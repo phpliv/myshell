@@ -1,5 +1,5 @@
 #!/bin/bash
-function mimvp_app_rand(){
+ssserver_port_rand() {
     min=$1
     max=$(($2-$min+1))
     num=$(($RANDOM+1000000000))
@@ -27,7 +27,7 @@ pip install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
 echo "net.core.default_qdisc=fq" >> /etc/sysctl.conf
 echo "net.ipv4.tcp_congestion_control=bbr" >> /etc/sysctl.conf && sysctl -p
 
-rndport=$(mimvp_app_rand 1024 65535)
+rndport=$(ssserver_port_rand 1024 65535)
 rndpassword=$(date +%s%N | md5sum | head -c 30)
 ipaddress=$(ifconfig -a|grep inet|grep -v 127.0.0.1|grep -v inet6|awk '{print $2}'|tr -d "addr:")
 filename=config.json
