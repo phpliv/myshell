@@ -14,6 +14,9 @@ else
 	echo -e "仅支持 Ubuntu / Debian / Centos" && exit 1
 fi
 $cmd update -y
+if [[ $cmd == "yum" ]]; then
+  $cmd install -y epel-release
+fi
 $cmd install -y python-pip net-tools libsodium-dev
 clear
 echo "Start Install Shadowsocks"
