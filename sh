@@ -15,11 +15,12 @@ else
 fi
 $cmd update -y
 if [[ $cmd == "yum" ]]; then
-  $cmd install -y epel-release libsodium
+  $cmd install -y epel-release
+  $cmd install -y python-pip net-tools
+  $cmd install -y libsodium
 else
-  $cmd install -y libsodium-dev
+  $cmd install -y python-pip net-tools libsodium-dev
 fi
-$cmd install -y python-pip net-tools 
 clear
 echo "Start Install Shadowsocks"
 pip install https://github.com/shadowsocks/shadowsocks/archive/master.zip -U
